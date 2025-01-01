@@ -60,7 +60,6 @@ vgvi_sf <- vgvi(observer = obs_sf,
                 max_distance = 500, observer_height = 2.2, # I set it to 2.2m so that we can also look above cars on the road
                 m = 1, b = 3, mode = "exponential",
                 cores = 22, progress = TRUE)
-write_sf(vgvi_sf, "01_analysis/0101_data/01_vgvi_raw.gpkg", overwrite = TRUE)
 
 # Now rasterize the VGVI
 vgvi_sf <- vgvi_sf[aoi,]
@@ -79,6 +78,7 @@ vgvi_rast_10 <- vgvi_rast_10 %>%
   mask(aoi)
 
 vgvi_rast_10 <- CGEI:::reclassify_jenks(vgvi_rast_10, 9)
+vgvi_rast_10 <- as.int(vgvi_rast_10)
 
 # Save
 writeRaster(vgvi_rast_10, "01_analysis/0101_data/01_vgvi.tif", overwrite = TRUE)
