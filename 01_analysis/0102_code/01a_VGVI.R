@@ -4,7 +4,7 @@
 #' This script calculates the Viewshed Greenness Visibilty Index (VGVI) based on
 #' a Digital Surface Model (DSM), a Digital Terrain Model (DTM) and a binary
 #' greenspace raster (1=green; 0=non-green). The data can be retrieved from
-#' Zenodo (https://zenodo.org/record/14579522).
+#' Zenodo (https://zenodo.org/record/14633167).
 #'
 
 library(sf)
@@ -18,17 +18,17 @@ library(CGEI)
 #'
 
 # AOI
-aoi <- st_read("https://zenodo.org/records/14579522/files/01_Nbg_Stadtteile.gpkg") %>%
+aoi <- st_read("https://zenodo.org/records/14633167/files/01_Nbg_Stadtteile.gpkg") %>%
   summarise()
 
 # DSM
-dsm <- rast("https://zenodo.org/records/14579522/files/03_dsm_1m.tif")
+dsm <- rast("https://zenodo.org/records/14633167/files/03_dsm_1m.tif")
 
 # DTM
-dtm <- rast("https://zenodo.org/records/14579522/files/03_dtm_1m.tif")
+dtm <- rast("https://zenodo.org/records/14633167/files/03_dtm_1m.tif")
 
 # Greenspace (binary)
-lulc <- rast("https://zenodo.org/records/14579522/files/03_ndvi_01_1m.tif")
+lulc <- rast("https://zenodo.org/records/14633167/files/03_ndvi_01_1m.tif")
 
 
 #'

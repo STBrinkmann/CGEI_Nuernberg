@@ -5,7 +5,7 @@
 #' three different vegetation indices: The Normalized Difference Vegetation
 #' Index (NDVI), the Leaf Area Index (LAI), and a binary greenspace raster
 #' (1=green; 0=non-green). The data can be retrieved from Zenodo
-#' (https://zenodo.org/record/14579522).
+#' (https://zenodo.org/record/14633167).
 #'
 
 library(sf)
@@ -19,17 +19,17 @@ library(CGEI)
 #'
 
 # AOI
-aoi <- st_read("https://zenodo.org/records/14579522/files/01_Nbg_Stadtteile.gpkg") %>%
+aoi <- st_read("https://zenodo.org/records/14633167/files/01_Nbg_Stadtteile.gpkg") %>%
   summarise()
 
 # NDVI
-ndvi <- rast("https://zenodo.org/records/14579522/files/03_ndvi_10m.tif")
+ndvi <- rast("https://zenodo.org/records/14633167/files/03_ndvi_10m.tif")
 
 # LAI
-lai <- rast("https://zenodo.org/records/14579522/files/03_lai_10m.tif")
+lai <- rast("https://zenodo.org/records/14633167/files/03_lai_10m.tif")
 
 # Greenspace (binary)
-lulc <- rast("https://zenodo.org/records/14579522/files/03_lulc_10m.tif")
+lulc <- rast("https://zenodo.org/records/14633167/files/03_lulc_10m.tif")
 
 
 #'
