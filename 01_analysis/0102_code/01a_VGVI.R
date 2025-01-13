@@ -63,15 +63,15 @@ vgvi_sf <- vgvi(observer = obs_sf,
 
 # Now rasterize the VGVI
 vgvi_sf <- vgvi_sf[aoi,]
-vgvi_rast <- sf_interpolat_IDW(observer = vgvi_sf,
-                               v = "VGVI",
-                               aoi = aoi,
-                               raster_res = 5,
-                               n = 10, beta = 2, max_distance = 500,
-                               na_only = TRUE,
-                               cores = 22, progress = TRUE)
+vgvi_rast_05 <- sf_interpolat_IDW(observer = vgvi_sf,
+                                  v = "VGVI",
+                                  aoi = aoi,
+                                  raster_res = 5,
+                                  n = 10, beta = 2, max_distance = 500,
+                                  na_only = TRUE,
+                                  cores = 22, progress = TRUE)
 
-vgvi_rast_10 <- aggregate(vgvi_rast, 2)
+vgvi_rast_10 <- aggregate(vgvi_rast_05, 2)
 
 vgvi_rast_10 <- vgvi_rast_10 %>%
   crop(aoi) %>%
