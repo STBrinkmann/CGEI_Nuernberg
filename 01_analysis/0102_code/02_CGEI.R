@@ -47,6 +47,7 @@ gaci <- gaci %>%
 # higher importance of access to greenspace.
 
 cgei <- (vgvi + gavi + gaci) / 3
+names(cgei) <- "cgei"
 
 # Save
 writeRaster(cgei, "01_analysis/0101_data/02_cgei.tif", overwrite = TRUE)
