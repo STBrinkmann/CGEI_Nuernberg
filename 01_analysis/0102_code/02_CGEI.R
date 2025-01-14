@@ -18,16 +18,20 @@ aoi <- read_sf(paste0(data_repo, "01_Nbg_Bezirke.gpkg")) %>%
 vgvi <- rast("01_analysis/0101_data/01_vgvi.tif") %>%
   crop(aoi) %>%
   mask(aoi)
+names(vgvi) <- "vgvi"
 
 # 2. GAVI
 gavi <- rast("01_analysis/0101_data/01_gavi.tif") %>%
   crop(aoi) %>%
   mask(aoi)
+names(gavi) <- "gavi"
 
 # 3. GACI
 gaci <- rast("01_analysis/0101_data/01_gaci.tif") %>%
   crop(aoi) %>%
   mask(aoi)
+names(gaci) <- "gaci"
+
 
 #'
 #' # 2. Calculate Composite Greenspace Exposure Index (CGEI)
@@ -48,6 +52,8 @@ gaci <- gaci %>%
 
 cgei <- (vgvi + gavi + gaci) / 3
 names(cgei) <- "cgei"
+
+cgei <- c(cgei, vgvi, gavi, gaci)
 
 # Save
 writeRaster(cgei, "01_analysis/0101_data/02_cgei.tif", overwrite = TRUE)
